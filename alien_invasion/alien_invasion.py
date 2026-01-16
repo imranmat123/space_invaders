@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+from ship import Ship
 from settings import settings
 
 class AlienInvasion:
@@ -12,6 +13,7 @@ class AlienInvasion:
 		self.screen = pygame.display.set_mode(size=(self.settings.screen_width,
 													self.settings.screen_hight))
 		self.clock = pygame.time.Clock()
+		self.ship = Ship(self)
 		pygame.display.set_caption("Alien Invasion")
 
 
@@ -19,13 +21,22 @@ class AlienInvasion:
 		""""start main loop for the game"""
 		while True:
 			# watch out for KBM events
-			for e in pygame.event.get():
-				if e.type == pygame.QUIT:
-					sys.exit()
+			self._check_events()
 			# make most recent draw screen avilable
-			pygame.display.flip()
+			self._update_screen()
 			self.clock.tick(60)
-			self.screen.fill(self.settings.bg_color)
+
+	def _update_screen(self):
+		""""update screen helper function"""
+		self.ship.blitme()
+		pygame.display.flip()
+		self.screen.fill(self.settings.bg_color)
+
+	def _check_events(self):
+		""""check events helper function"""
+		for e in pygame.event.get():
+			if e.type == pygame.QUIT:
+				sys.exit()
 
 if __name__ == '__main__':
 	# make a game instance, and run the game
