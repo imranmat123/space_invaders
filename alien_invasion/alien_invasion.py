@@ -37,6 +37,9 @@ class AlienInvasion:
 		for e in pygame.event.get():
 			if e.type == pygame.QUIT:
 				sys.exit()
+			elif e.type == pygame.KEYDOWN:
+				if e.key == pygame.K_d:
+					self.ship.rect.x += 1
 
 if __name__ == '__main__':
 	# make a game instance, and run the game
