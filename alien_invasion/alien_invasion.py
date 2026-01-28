@@ -31,6 +31,10 @@ class AlienInvasion:
 		self.ship.blitme()
 		pygame.display.flip()
 		self.screen.fill(self.settings.bg_color)
+		self.ship.movement_settings()
+
+
+
 
 	def _check_events(self):
 		""""check events helper function"""
@@ -39,7 +43,25 @@ class AlienInvasion:
 				sys.exit()
 			elif e.type == pygame.KEYDOWN:
 				if e.key == pygame.K_d:
-					self.ship.rect.x += 1
+					self.ship.move_right = True
+				if e.key == pygame.K_a:
+					self.ship.move_left = True
+				if e.key == pygame.K_w:
+					self.ship.move_up = True
+				if e.key == pygame.K_s:
+					self.ship.move_down = True
+
+			elif e.type == pygame.KEYUP:
+				if e.key == pygame.K_d:
+						self.ship.move_right = False
+				if e.key == pygame.K_a:
+						self.ship.move_left = False
+				if e.key == pygame.K_w:
+						self.ship.move_up = False
+				if e.key == pygame.K_s:
+						self.ship.move_down = False
+
+
 
 if __name__ == '__main__':
 	# make a game instance, and run the game
