@@ -34,8 +34,6 @@ class AlienInvasion:
 		self.ship.movement_settings()
 
 
-
-
 	def _check_events(self):
 		""""check events helper function"""
 		for e in pygame.event.get():

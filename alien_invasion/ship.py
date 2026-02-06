@@ -29,6 +29,21 @@ class Ship:
 
 
 	def movement_settings(self):
+
+		if self.move_right and  self.rect.right > self.SR.right:
+			self.move_right = False
+		elif self.move_left and  self.rect.left < 0:
+			self.move_left = False
+		elif self.move_down and self.rect.bottom > 799:
+			self.move_down = False
+		elif self.move_up and self.rect.top < 0:
+			self.move_up = False
+
+
+
+
+
+
 		if self.move_right:
 			self.x = self.x + self.setting.speed
 		if self.move_left:
